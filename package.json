@@ -1,22 +1,18 @@
 {
   "name": "@madcat/kanjivg",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "KanjiVG",
   "repository": "https://github.com/mkurcius/kanjivg",
   "scripts": {
     "dist": "npm run dist:clean && npm run dist:kanji",
-
     "dist:clean": "rimraf dist",
     "dist:kanji": "npm run dist:kanji:orig && npm run dist:kanji:min",
-
     "dist:kanji:orig": "npm run dist:kanji:orig:main && npm run dist:kanji:orig:variations",
     "dist:kanji:orig:main": "cpy kanji/*.svg !kanji/*-*.svg dist/orig/main",
     "dist:kanji:orig:variations": "cpy kanji/*-*.svg dist/orig/variations",
-
     "dist:kanji:min": "npm run dist:kanji:min:main && npm run dist:kanji:min:variations",
     "dist:kanji:min:main": "ts-node minify-kanjivg kanji/*.svg !kanji/*-*.svg dist/min/main",
     "dist:kanji:min:variations": "ts-node minify-kanjivg kanji/*-*.svg dist/min/variations",
-
     "prepublishOnly": "npm run dist"
   },
   "keywords": [
