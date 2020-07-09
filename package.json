@@ -4,11 +4,19 @@
   "description": "KanjiVG",
   "repository": "https://github.com/mkurcius/kanjivg",
   "scripts": {
+    "dist": "npm run dist:clean && npm run dist:kanji",
+
     "dist:clean": "rimraf dist",
-    "dist:kanji:main": "cpy kanji/*.svg !kanji/*-*.svg dist/main",
-    "dist:kanji:variations": "cpy kanji/*-*.svg dist/variations",
-    "dist:create": "npm run dist:kanji:main && npm run dist:kanji:variations",
-    "dist": "npm run dist:clean && npm run dist:create",
+    "dist:kanji": "npm run dist:kanji:orig && npm run dist:kanji:min",
+
+    "dist:kanji:orig": "npm run dist:kanji:orig:main && npm run dist:kanji:orig:variations",
+    "dist:kanji:orig:main": "cpy kanji/*.svg !kanji/*-*.svg dist/orig/main",
+    "dist:kanji:orig:variations": "cpy kanji/*-*.svg dist/orig/variations",
+
+    "dist:kanji:min": "npm run dist:kanji:min:main && npm run dist:kanji:min:variations",
+    "dist:kanji:min:main": "ts-node minify-kanjivg kanji/*.svg !kanji/*-*.svg dist/min/main",
+    "dist:kanji:min:variations": "ts-node minify-kanjivg kanji/*-*.svg dist/min/variations",
+
     "prepublishOnly": "npm run dist"
   },
   "keywords": [
@@ -17,7 +25,15 @@
   "author": "Michal Kurcius",
   "license": "CC-BY-3.0",
   "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/meow": "^5.0.0",
+    "@types/node": "^14.0.20",
     "cpy-cli": "^3.1.1",
-    "rimraf": "^3.0.2"
+    "glob": "^7.1.6",
+    "globby": "^11.0.1",
+    "meow": "^7.0.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
   }
 }
