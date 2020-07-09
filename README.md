@@ -1,8 +1,15 @@
-This is the KanjiVG source repository. It is rather raw, so you probably want
-to process it before using it.
+# Fork of great [KanjiVG](https://github.com/KanjiVG/kanjivg) repo
 
-Licence
--------
+This fork was created in order to be able to install KanjiVG using npm.
+Provided original  
+
+# Installation
+
+`npm install @madcat/kanjivg`
+
+
+
+# Licence
 KanjiVG is copyright Ulrich Apel and released under the Creative Commons
 Attribution-Share Aline 3.0 licence:
 
@@ -10,8 +17,7 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 See the COPYING file for more details.
 
-Description
------------
+# Description
 This repository is made of two directories: SVG and XML, as well as a set of
 Python scripts.
 

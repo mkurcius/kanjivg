@@ -4,3 +4,6 @@ kanjivg.xml
 kanjivg-*xml.gz
 kanjivg-*.zip
 parse-xml.pl
+dist
+node_modules
+.idea

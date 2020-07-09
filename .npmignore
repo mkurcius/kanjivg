@@ -1,0 +1,13 @@
+.idea
+kanji
+kanji_mismatch
+node_modules
+.gitignore
+.gitattributes
+check-1.0
+*.pl
+*.py
+*.pm
+strokes.txt
+template.svg
+updatepublic.sh

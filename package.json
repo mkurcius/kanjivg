@@ -1,0 +1,23 @@
+{
+  "name": "@madcat/kanjivg",
+  "version": "1.0.0",
+  "description": "KanjiVG",
+  "repository": "https://github.com/mkurcius/kanjivg",
+  "scripts": {
+    "dist:clean": "rimraf dist",
+    "dist:kanji:main": "cpy kanji/*.svg !kanji/*-*.svg dist/main",
+    "dist:kanji:variations": "cpy kanji/*-*.svg dist/variations",
+    "dist:create": "npm run dist:kanji:main && npm run dist:kanji:variations",
+    "dist": "npm run dist:clean && npm run dist:create",
+    "prepublishOnly": "npm run dist"
+  },
+  "keywords": [
+    "kanjivg"
+  ],
+  "author": "Michal Kurcius",
+  "license": "CC-BY-3.0",
+  "devDependencies": {
+    "cpy-cli": "^3.1.1",
+    "rimraf": "^3.0.2"
+  }
+}
