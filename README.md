@@ -29,4 +29,4 @@ Attribution-Share Aline 3.0 licence:
 
 http://creativecommons.org/licenses/by-sa/3.0/
 
-See the COPYING file for more details.
+See the [COPYING](./COPYING) file for more details.
