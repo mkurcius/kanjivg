@@ -17,7 +17,7 @@
     "kanjivg"
   ],
   "author": "Michal Kurcius",
-  "license": "CC-BY-3.0",
+  "license": "CC BY-SA 3.0",
   "devDependencies": {
     "@types/node": "^14.0.20",
     "cpy-cli": "^3.1.1",
