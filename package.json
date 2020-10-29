@@ -6,11 +6,9 @@
   "scripts": {
     "dist": "npm run dist:clean && npm run dist:kanji",
     "dist:clean": "rimraf dist",
-    "dist:kanji": "run-p dist:kanji:orig:* dist:kanji:min:*",
-    "dist:kanji:orig:main": "cpy kanji/*.svg !kanji/*-*.svg dist/orig/main",
-    "dist:kanji:orig:variations": "cpy kanji/*-*.svg dist/orig/variations",
-    "dist:kanji:min:main": "ts-node minify-kanjivg kanji/*.svg !kanji/*-*.svg dist/min/main",
-    "dist:kanji:min:variations": "ts-node minify-kanjivg kanji/*-*.svg dist/min/variations",
+    "dist:kanji": "run-p dist:kanji:*",
+    "dist:kanji:main": "ts-node minify-kanjivg kanji/*.svg !kanji/*-*.svg dist/main",
+    "dist:kanji:variations": "ts-node minify-kanjivg kanji/*-*.svg dist/variations",
     "prepublishOnly": "npm run dist"
   },
   "keywords": [
