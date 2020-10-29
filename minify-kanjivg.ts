@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as globby from 'globby';
 import * as meow from 'meow';
 import * as path from 'path';
+import { KanjivgPath } from './kanjivg-path';
 
 const cli = meow(`
   Usage
@@ -16,10 +17,10 @@ const source = cli.input;
 const destination = cli.input.pop() as string;
 
 
-const PATH_REG_EXP = /<path .*d="([^"]*)".*\/>/g;
+const PATH_REG_EXP = /<path id="([^"]*)" .*d="([^"]*)".*\/>/g;
 
 if (!fs.existsSync(destination)) {
-  fs.mkdirSync(destination, {recursive: true});
+  fs.mkdirSync(destination, { recursive: true });
 }
 
 globby.sync(source).forEach(file => {
@@ -28,16 +29,23 @@ globby.sync(source).forEach(file => {
 
   const destFile = path.join(destination, path.basename(file));
   fs.writeFileSync(destFile, svgContent);
+
+  const destFileInfo = destFile.replace(/\.svg$/, '.json');
+  const pathsIds = svgPaths.map(path => path.id);
+  fs.writeFileSync(destFileInfo, JSON.stringify(pathsIds));
 });
 
-function extractSvgPaths(file: string): string[] {
+function extractSvgPaths(file: string): KanjivgPath[] {
   const content = fs.readFileSync(file, 'utf8');
-  return Array.from(content.matchAll(PATH_REG_EXP), m => m[1]);
+  return Array.from(content.matchAll(PATH_REG_EXP), m => ({
+    id: m[1],
+    d: m[2],
+  }));
 }
 
-function buildSvgContent(svgPaths: string[]): string {
+function buildSvgContent(svgPaths: KanjivgPath[]): string {
   const svgPathNodes = svgPaths
-    .map(path => `<path d="${path}"/>`)
+    .map(path => `<path id="${path.id}" d="${path.d}"/>`)
     .join('\n');
 
   return `
