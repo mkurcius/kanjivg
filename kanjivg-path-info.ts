@@ -1,6 +1,5 @@
-export interface KanjivgPath {
+export interface KanjivgPathInfo {
   id: string;
-  d: string;
   start: {
     x: number;
     y: number;
