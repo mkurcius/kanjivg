@@ -49,7 +49,7 @@ function buildSvgContent(svgPaths: KanjivgPath[]): string {
     .join('\n');
 
   return `
-<svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109" style="fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
 ${svgPathNodes}
 </svg>`.trim();
 }
